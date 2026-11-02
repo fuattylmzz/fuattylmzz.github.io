@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,37 +20,9 @@
     <style>
         /* ============================================================
            APPLE LIQUID GLASS & NATURE-INSPIRED NOBLE GREEN PALETTE
+           (SABİT GECE MODU)
            ============================================================ */
         :root {
-            --bg-color: #f2f5f3;
-            --bg-gradient: radial-gradient(circle at 10% 20%, rgba(206, 222, 214, 0.5) 0%, rgba(239, 245, 241, 0.8) 50%, #eaf0ec 100%);
-            
-            /* Liquid Glass Temel Değişkenleri */
-            --glass-bg: rgba(255, 255, 255, 0.65);
-            --glass-border: rgba(255, 255, 255, 0.6);
-            --glass-card-bg: rgba(255, 255, 255, 0.72);
-            --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.75);
-            --glass-shadow: 0 12px 36px -10px rgba(27, 48, 38, 0.08), 0 4px 16px rgba(0, 0, 0, 0.03);
-            --glass-hover-shadow: 0 20px 40px -12px rgba(23, 44, 34, 0.14), 0 8px 24px rgba(0, 0, 0, 0.05);
-            --glass-blur: blur(20px);
-            --modal-blur: blur(25px);
-
-            /* Derin ve Doygun Zarif Yeşil Vurgu Tonları */
-            --accent-green-primary: #27493a;     /* Asil Koyu Zümrüt / Orman */
-            --accent-green-secondary: #3e6b56;   /* Doğal Adaçayı Yeşil */
-            --accent-green-light: #528a70;       /* Açık Doğal Yaprak */
-            --accent-green-soft: rgba(39, 73, 58, 0.09);
-            --accent-hover: #1e3a2d;
-            
-            --text-main: #1c2721;
-            --text-muted: #566860;
-            --surface-soft: rgba(228, 237, 231, 0.55);
-            --ring-color: rgba(62, 107, 86, 0.28);
-            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-            --reading-font-size: 1rem;
-        }
-
-        [data-theme="dark"] {
             --bg-color: #0d1411;
             --bg-gradient: radial-gradient(circle at 10% 10%, rgba(20, 38, 30, 0.6) 0%, #0a110e 60%, #060a08 100%);
             
@@ -60,7 +32,9 @@
             --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
             --glass-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.5);
             --glass-hover-shadow: 0 22px 48px -10px rgba(0, 0, 0, 0.65), 0 0 24px rgba(82, 138, 112, 0.12);
-            
+            --glass-blur: blur(20px);
+            --modal-blur: blur(25px);
+
             --accent-green-primary: #528a70;
             --accent-green-secondary: #6ea88d;
             --accent-green-light: #8bc2a8;
@@ -71,6 +45,8 @@
             --text-muted: #95a79f;
             --surface-soft: rgba(255, 255, 255, 0.05);
             --ring-color: rgba(110, 168, 141, 0.3);
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --reading-font-size: 1rem;
         }
 
         * {
@@ -89,7 +65,6 @@
             line-height: 1.7;
             padding-bottom: 4rem;
             min-height: 100vh;
-            transition: background 0.4s ease, color 0.4s ease;
         }
 
         body.modal-open {
@@ -277,10 +252,6 @@
             outline: none;
             border-color: var(--accent-green-secondary);
             box-shadow: var(--glass-specular), 0 0 0 3px var(--ring-color), 0 8px 24px rgba(62, 107, 86, 0.12);
-            background: rgba(255, 255, 255, 0.88);
-        }
-
-        [data-theme="dark"] .search-box input:focus {
             background: rgba(25, 40, 32, 0.88);
         }
 
@@ -315,7 +286,7 @@
             transform: translateY(-2px);
             border-color: var(--accent-green-light);
             color: var(--accent-green-primary);
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .filter-btn.active {
@@ -351,7 +322,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 60%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 60%);
             pointer-events: none;
             opacity: 0.7;
         }
@@ -382,7 +353,7 @@
             box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 4px 10px rgba(0, 0, 0, 0.08);
         }
 
-        /* Kategori Renkleri - Yeşil ve Doğal Cam Uyumlu */
+        /* Kategori Renkleri */
         .category-seyahat-yazilari { background: linear-gradient(135deg, #2b5876, #4e4376); }
         .category-kose-yazilari    { background: linear-gradient(135deg, #27493a, #3e6b56); }
         .category-portreler        { background: linear-gradient(135deg, #44594f, #667c71); }
@@ -436,7 +407,7 @@
         .read-more-btn {
             background: none;
             border: none;
-            color: var(--accent-green-primary);
+            color: var(--accent-green-light);
             cursor: pointer;
             font-weight: 600;
             font-size: 0.9rem;
@@ -444,10 +415,6 @@
             align-items: center;
             gap: 0.35rem;
             transition: gap 0.25s var(--ease-out), color 0.2s;
-        }
-
-        [data-theme="dark"] .read-more-btn {
-            color: var(--accent-green-light);
         }
 
         .read-more-btn:hover {
@@ -523,8 +490,8 @@
             border-radius: 50%;
             margin-bottom: 1rem;
             object-fit: cover;
-            border: 3px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 24px rgba(27, 48, 38, 0.15);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
             transition: transform 0.35s var(--ease-out);
         }
 
@@ -607,7 +574,7 @@
 
         .category-count:hover {
             background: var(--surface-soft);
-            color: var(--accent-green-primary);
+            color: var(--accent-green-light);
             transform: translateX(4px);
         }
 
@@ -775,8 +742,7 @@
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
         }
 
-        .btn-theme { background: linear-gradient(135deg, #27493a, #488470); }
-        .btn-top   { background: linear-gradient(135deg, #3e6b56, #6ea88d); }
+        .btn-top { background: linear-gradient(135deg, #3e6b56, #6ea88d); }
 
         /* Yorum ve İçerik Stilleri */
         .comments-section, .related-posts-section {
@@ -834,10 +800,6 @@
 
         .comment-user {
             font-weight: 600;
-            color: var(--accent-green-primary);
-        }
-
-        [data-theme="dark"] .comment-user {
             color: var(--accent-green-light);
         }
 
@@ -864,15 +826,11 @@
         }
 
         .post-content pre {
-            background: rgba(13, 20, 17, 0.06);
+            background: rgba(0, 0, 0, 0.3);
             padding: 1.2rem;
             border-radius: 14px;
             overflow-x: auto;
             border: 1px solid var(--glass-border);
-        }
-
-        [data-theme="dark"] .post-content pre {
-            background: rgba(0, 0, 0, 0.3);
         }
 
         .toc-box {
@@ -1087,9 +1045,6 @@
     <button class="floating-btn btn-top" id="scrollTopBtn" type="button" aria-label="Yukarı çık">
         <i class="fas fa-arrow-up"></i>
     </button>
-    <button class="floating-btn btn-theme" id="themeToggle" type="button" aria-label="Temayı değiştir">
-        <i class="fas fa-moon"></i>
-    </button>
 </div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -1255,25 +1210,6 @@
 
     function setStoredValue(key, value) {
         try { localStorage.setItem(key, value); } catch (e) {}
-    }
-
-    function initTheme() {
-        const savedTheme = getStoredValue('theme', 'light');
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        updateThemeIcon(savedTheme);
-        
-        document.getElementById('themeToggle')?.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            setStoredValue('theme', newTheme);
-            updateThemeIcon(newTheme);
-        });
-    }
-
-    function updateThemeIcon(theme) {
-        const icon = document.querySelector('#themeToggle i');
-        if (icon) icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
     }
 
     function updateProgressBar() {
@@ -1566,7 +1502,6 @@
 
     // ============ ETKİLEŞİM VE BAŞLANGIÇ ============
     document.addEventListener('DOMContentLoaded', () => {
-        initTheme();
         updateLastReadDisplay();
         loadPosts();
 
