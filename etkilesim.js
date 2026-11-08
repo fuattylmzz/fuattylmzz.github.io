@@ -39,6 +39,13 @@ function postKey(post) {
   return post.number + (slug ? '-' + slug : '');
 }
 
+// Firestore'da yorumun adı: "Kullanıcı Adı 2026-11-09 14:32:05"
+function commentKey(name) {
+  const who = (name || 'Okur').replace(/[\/\x00-\x1f]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 40) || 'Okur';
+  const when = new Date().toLocaleString('sv-SE', { timeZone: 'Europe/Istanbul' });
+  return who + ' ' + when;
+}
+
 // Her tarayıcıya gizli, anonim bir kimlik verir (giriş gerekmez)
 let uidPromise = null;
 function getUid() {
@@ -185,7 +192,7 @@ async function onSubmitComment() {
   btn.disabled = true;
   try {
     const uid = await getUid();
-    await addDoc(postCol(key, 'comments'), {
+    await setDoc(doc(db, 'posts', key, 'comments', commentKey(name)), {
       text: text.slice(0, 1000), userName: name || 'Okur', createdAt: serverTimestamp(), uid, approved: false
     });
     store.set('ys_last_comment', String(Date.now()));
